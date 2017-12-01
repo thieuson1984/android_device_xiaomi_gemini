@@ -21,9 +21,14 @@ LOCAL_PROPRIETARY_MODULE := true
 LOCAL_MODULE_OWNER := qcom
 LOCAL_MODULE_TAGS := optional
 
-LOCAL_MODULE := android.hardware.power@1.1-service.msm8996
-LOCAL_INIT_RC := android.hardware.power@1.1-service.msm8996.rc
-LOCAL_SRC_FILES := service.cpp Power.cpp power-helper.c metadata-parser.c utils.c list.c hint-data.c
+# LOCAL_MODULE := android.hardware.power@1.1-service.msm8996
+# LOCAL_INIT_RC := android.hardware.power@1.1-service.msm8996.rc
+# LOCAL_SRC_FILES := service.cpp Power.cpp power-helper.c metadata-parser.c utils.c list.c hint-data.c
+
+# Revert point
+LOCAL_MODULE := power.msm8996
+LOCAL_SHARED_LIBRARIES := liblog libcutils libdl
+LOCAL_SRC_FILES := power.c metadata-parser.c utils.c list.c hint-data.c
 
 # Include target-specific files.
 ifeq ($(call is-board-platform-in-list, msm8996), true)
@@ -42,13 +47,16 @@ ifneq ($(TARGET_TAP_TO_WAKE_NODE),)
   LOCAL_CFLAGS += -DTAP_TO_WAKE_NODE=\"$(TARGET_TAP_TO_WAKE_NODE)\"
 endif
 
-LOCAL_SHARED_LIBRARIES := \
-    libbase \
-    libcutils \
-    libhidlbase \
-    libhidltransport \
-    liblog \
-    libutils \
-    android.hardware.power@1.1 \
+# LOCAL_SHARED_LIBRARIES := \
+#     libbase \
+#     libcutils \
+#     libhidlbase \
+#     libhidltransport \
+#     liblog \
+#     libutils \
+#     android.hardware.power@1.1 \
 
-include $(BUILD_EXECUTABLE)
+# include $(BUILD_EXECUTABLE)
+
+# Revert point
+include $(BUILD_SHARED_LIBRARY)

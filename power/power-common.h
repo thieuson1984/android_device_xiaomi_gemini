@@ -49,5 +49,5 @@ enum CPU_GOV_CHECK {
     CPU3 = 3
 };
 
-#define UNUSED(x) UNUSED_ ## x __attribute__((__unused__))
+// #define UNUSED(x) UNUSED_ ## x __attribute__((__unused__))
 

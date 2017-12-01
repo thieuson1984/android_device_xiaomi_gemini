@@ -242,6 +242,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
     $(LOCAL_PATH)/nfc/libnfc-nxp.conf:system/etc/libnfc-nxp.conf
 
+# Power
+PRODUCT_PACKAGES += \
+    power.msm8996
+
 # OMX
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
